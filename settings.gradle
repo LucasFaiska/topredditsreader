@@ -1,3 +1,4 @@
 rootProject.name = "topredditsreader"
 include ':app'
 include ':data'
+include ':domain'
