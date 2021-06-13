@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">topredditsreader</string>
+    <string name="app_name">Top Reddits Reader</string>
+    <string name="splash_screen_image_content_description">Reddit Logo</string>
 </resources>
