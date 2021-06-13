@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lfaiska.topredditsreader.R
@@ -75,8 +75,27 @@ class PostsListFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        postsListViewModel.postsList.observe(viewLifecycleOwner, Observer { postsList ->
+        postsListViewModel.postsList.observe(viewLifecycleOwner, { postsList ->
             postsListAdapter.updatePosts(postsList.posts)
+        })
+
+        postsListViewModel.isLoadingPosts.observe(viewLifecycleOwner, { isLoading ->
+            binding.isLoadingPosts = isLoading
+        })
+
+        postsListViewModel.isEmptyPosts.observe(viewLifecycleOwner, { isEmpty ->
+            binding.isEmptyPosts = isEmpty
+        })
+
+        postsListViewModel.hasLoadPostsFailure.observe(viewLifecycleOwner, { hasFailure ->
+            binding.hasLoadFailure = hasFailure
+        })
+
+        postsListViewModel.hasUpdatePostsFailure.observe(viewLifecycleOwner, { hasFailure ->
+            if (hasFailure) {
+                AlertDialog.Builder(requireContext())
+                    .setMessage(getString(R.string.posts_update_failure_message)).show()
+            }
         })
     }
 

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Top Reddits Reader</string>
     <string name="splash_screen_image_content_description">Reddit Logo</string>
+
+    <string name="empty_posts_message">No posts were found.</string>
+    <string name="posts_load_failure_message">There was an error fetching the posts.</string>
+    <string name="posts_update_failure_message">Error on update posts, please try again.</string>
+
 </resources>
