@@ -18,6 +18,12 @@ class PostsListViewModel constructor(
 
     fun loadPosts() {
         viewModelScope.launch {
+            _postsList.value = getTopRedditsPostsUseCase.execute("")
+        }
+    }
+
+    fun updatePosts() {
+        viewModelScope.launch {
             val after = _postsList.value?.after ?: ""
             _postsList.value = getTopRedditsPostsUseCase.execute(after)
         }

@@ -10,13 +10,18 @@ import com.lfaiska.topredditsreader.databinding.ViewPostsListItemBinding
 import com.lfaiska.topredditsreader.domain.model.PostData
 
 class PostsListAdapter(
-    private val onMatchSelected: (matchId: PostData) -> Unit
+    private val onPostSelected: (matchId: PostData) -> Unit
 ) : RecyclerView.Adapter<PostsListAdapter.MatchViewHolder>() {
 
     private val posts: MutableList<PostData> = mutableListOf()
 
-    fun updateMatches(newMatches: List<PostData>) {
-        posts.addAll(newMatches)
+    fun clear() {
+        posts.clear()
+        this.notifyDataSetChanged()
+    }
+
+    fun updatePosts(newPosts: List<PostData>) {
+        posts.addAll(newPosts)
         this.notifyDataSetChanged()
     }
 
@@ -41,10 +46,8 @@ class PostsListAdapter(
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         holder.binding.post = posts[position]
-        holder.binding.root.setOnClickListener { onMatchSelected.invoke(posts[position]) }
+        holder.binding.root.setOnClickListener { onPostSelected.invoke(posts[position]) }
     }
-
-
 
     class MatchViewHolder(val binding: ViewPostsListItemBinding) : ViewHolder(binding.root)
 }

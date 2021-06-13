@@ -39,6 +39,7 @@ class PostsListFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_posts_list, container, false)
         setupView()
+        setupObservers()
         loadPosts()
         return binding.root
     }
@@ -46,12 +47,18 @@ class PostsListFragment : Fragment() {
     private fun setupView() {
         val linearLayoutManager = LinearLayoutManager(context)
         postsListAdapter.setHasStableIds(true)
+
         binding.viewmodel = postsListViewModel
         binding.postsList.apply {
             this.adapter = postsListAdapter
             this.layoutManager = linearLayoutManager
         }
+
         binding.postsList.addOnScrollListener(endlessScrollListener)
+
+        binding.swipeContainer.setOnRefreshListener {
+            refreshPosts()
+        }
     }
 
     private val endlessScrollListener = object : RecyclerView.OnScrollListener() {
@@ -62,15 +69,28 @@ class PostsListFragment : Fragment() {
             val pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition()
 
             if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
-                loadPosts()
+                updatePosts()
             }
         }
     }
 
+    private fun setupObservers() {
+        postsListViewModel.postsList.observe(viewLifecycleOwner, Observer { postsList ->
+            postsListAdapter.updatePosts(postsList.posts)
+        })
+    }
+
     private fun loadPosts() {
         postsListViewModel.loadPosts()
-        postsListViewModel.postsList.observe(viewLifecycleOwner, { postsList ->
-            postsListAdapter.updateMatches(postsList.posts)
-        })
+    }
+
+    private fun updatePosts() {
+        postsListViewModel.updatePosts()
+    }
+
+    private fun refreshPosts() {
+        postsListAdapter.clear()
+        postsListViewModel.loadPosts()
+        binding.swipeContainer.isRefreshing = false;
     }
 }
