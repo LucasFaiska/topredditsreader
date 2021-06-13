@@ -1,5 +1,5 @@
 package com.lfaiska.topredditsreader.data.remote.dto
 
-data class ListChildrenDataResponse(
+data class ListDataChildrenDataResponse(
     val title: String
 )

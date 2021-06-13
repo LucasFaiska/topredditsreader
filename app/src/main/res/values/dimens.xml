@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="post_container_padding">10dp</dimen>
+    <dimen name="post_title_text_size">14sp</dimen>
+    <dimen name="divisor_height">1dp</dimen>
+</resources>

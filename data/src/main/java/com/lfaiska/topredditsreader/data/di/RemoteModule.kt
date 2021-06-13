@@ -21,7 +21,7 @@ val dataModule = module {
 }
 
 fun provideGson(): Gson {
-    return GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).create()
+    return GsonBuilder().setLenient().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).create()
 }
 
 fun provideHttpClient(): OkHttpClient {
