@@ -14,6 +14,10 @@
         <action
             android:id="@+id/navigate_to_posts"
             app:destination="@id/posts_fragment"
+            app:enterAnim="@transition/trans_left_in"
+            app:exitAnim="@transition/trans_left_out"
+            app:popEnterAnim="@transition/trans_left_in"
+            app:popExitAnim="@transition/trans_left_out"
             app:popUpTo="@id/splash_fragment"
             app:popUpToInclusive="true" />
 
@@ -22,6 +26,6 @@
     <fragment
         android:id="@+id/posts_fragment"
         android:name="com.lfaiska.topredditsreader.presentation.scenes.posts.list.PostsListFragment"
-        tools:layout="@layout/fragment_posts_list"/>
+        tools:layout="@layout/fragment_posts_list" />
 
 </navigation>
