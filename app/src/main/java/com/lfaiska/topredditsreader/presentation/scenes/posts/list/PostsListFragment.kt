@@ -44,35 +44,32 @@ class PostsListFragment : Fragment() {
     }
 
     private fun setupView() {
-        val layoutManager = LinearLayoutManager(context)
+        val linearLayoutManager = LinearLayoutManager(context)
         postsListAdapter.setHasStableIds(true)
-
         binding.viewmodel = postsListViewModel
         binding.postsList.apply {
             this.adapter = postsListAdapter
-            this.layoutManager = layoutManager
+            this.layoutManager = linearLayoutManager
         }
+        binding.postsList.addOnScrollListener(endlessScrollListener)
+    }
 
-        binding.postsList.addOnScrollListener(
-            object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    if (dy > 0) {
-                        val visibleItemCount = layoutManager.childCount
-                        val totalItemCount = layoutManager.itemCount
-                        val pastVisiblesItems = layoutManager.findFirstVisibleItemPosition()
+    private val endlessScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            val linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager
+            val visibleItemCount = linearLayoutManager.childCount
+            val totalItemCount = linearLayoutManager.itemCount
+            val pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition()
 
-                        if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
-                            loadPosts()
-                        }
-                    }
-                }
+            if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
+                loadPosts()
             }
-        )
+        }
     }
 
     private fun loadPosts() {
         postsListViewModel.loadPosts()
-        postsListViewModel.postsList.observe(viewLifecycleOwner, Observer { postsList ->
+        postsListViewModel.postsList.observe(viewLifecycleOwner, { postsList ->
             postsListAdapter.updateMatches(postsList.posts)
         })
     }
