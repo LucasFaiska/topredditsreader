@@ -12,9 +12,9 @@ class PostMapper {
                 this.data.after,
                 this.data.children.map { listChildrenResponse ->
                     PostData(
-                        System.currentTimeMillis(),
                         listChildrenResponse.kind,
-                        listChildrenResponse.data.title
+                        listChildrenResponse.data.title,
+                        listChildrenResponse.data.thumbnail
                     )
                 }
             )

@@ -38,10 +38,6 @@ class PostsListAdapter(
         )
     }
 
-    override fun getItemId(position: Int): Long {
-        return posts[position].id
-    }
-
     override fun getItemCount() = posts.size
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {

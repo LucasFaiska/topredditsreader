@@ -4,41 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="post"
             type="com.lfaiska.topredditsreader.domain.model.PostData" />
     </data>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/post_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/post_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/post_container_padding">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/post_thumb"
+            imageUrl="@{post.thumbnail}"
+            android:layout_width="@dimen/post_thumb_size"
+            android:layout_height="@dimen/post_thumb_size"
+            android:layout_marginStart="@dimen/post_container_padding"
+            android:layout_marginTop="@dimen/post_container_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                style="@style/postsTextStyle"
-                android:id="@+id/post_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{post.title}"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Thank you stranger. Shows the award." />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/post_title"
+            style="@style/postsTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/post_container_padding"
+            android:layout_marginEnd="@dimen/post_container_padding"
+            android:text="@{post.title}"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/post_thumb"
+            app:layout_constraintTop_toTopOf="@id/post_thumb"
+            app:layout_constraintBottom_toBottomOf="@id/post_thumb"
+            android:maxLines="5"
+            android:ellipsize="end"
+            tools:text="Thank you stranger. Shows the award." />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/divisor_height"
+            android:layout_marginTop="@dimen/post_container_padding"
             android:background="@color/color_primary_dark"
-            app:layout_constraintTop_toBottomOf="@id/title" />
+            app:layout_constraintTop_toBottomOf="@id/post_thumb" />
 
-    </LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
