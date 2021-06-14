@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lfaiska.topredditsreader.R
 import com.lfaiska.topredditsreader.databinding.FragmentPostsListBinding
+import com.lfaiska.topredditsreader.presentation.components.EndlessScrollViewListener
 import org.koin.androidx.viewmodel.compat.ViewModelCompat
 
 class PostsListFragment : Fragment() {
-    lateinit var binding: FragmentPostsListBinding
+    private lateinit var binding: FragmentPostsListBinding
+    private lateinit var endlessScrollViewListener: EndlessScrollViewListener
 
     private val postsListViewModel: PostsListViewModel by ViewModelCompat.viewModel(
         this,
@@ -48,29 +50,23 @@ class PostsListFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(context)
         postsListAdapter.setHasStableIds(true)
 
+        endlessScrollViewListener = object : EndlessScrollViewListener() {
+            override fun onScrollToTheEnd() {
+                updatePosts()
+            }
+        }
+
         binding.viewmodel = postsListViewModel
         binding.postsList.apply {
             this.adapter = postsListAdapter
             this.layoutManager = linearLayoutManager
         }
 
-        binding.postsList.addOnScrollListener(endlessScrollListener)
+        binding.postsList.addOnScrollListener(endlessScrollViewListener)
 
         binding.swipeContainer.setOnRefreshListener {
             refreshPosts()
-        }
-    }
-
-    private val endlessScrollListener = object : RecyclerView.OnScrollListener() {
-        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            val linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager
-            val visibleItemCount = linearLayoutManager.childCount
-            val totalItemCount = linearLayoutManager.itemCount
-            val pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition()
-
-            if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
-                updatePosts()
-            }
+            endlessScrollViewListener.reset()
         }
     }
 
