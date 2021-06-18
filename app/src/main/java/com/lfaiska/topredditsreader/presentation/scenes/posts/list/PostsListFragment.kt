@@ -95,7 +95,7 @@ class PostsListFragment : Fragment() {
         })
     }
 
-    private fun loadPosts() {
+    fun loadPosts() {
         postsListViewModel.loadPosts()
     }
 

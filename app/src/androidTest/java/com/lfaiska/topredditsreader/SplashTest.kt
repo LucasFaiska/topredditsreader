@@ -34,23 +34,23 @@ class SplashTest {
         every {
             mockNavController.navigate(SplashFragmentDirections.navigateToPosts())
         } returns Unit
-
-        scenario.onFragment { fragment ->
-            Navigation.setViewNavController(fragment.requireView(), mockNavController)
-        }
-
-        scenario.onFragment { fragment ->
-            Navigation.setViewNavController(fragment.requireView(), mockNavController)
-        }
     }
 
     @Test
     fun testSplashSceneShowingCorrectDrawable() {
+        scenario.onFragment { fragment ->
+            Navigation.setViewNavController(fragment.requireView(), mockNavController)
+        }
+
         onView(withId(R.id.splash_image)).check(matches(VectorDrawableMatcher(R.drawable.ic_reddit_logo)))
     }
 
     @Test
     fun testNavigationToPostListSceneAfterDelayTime() {
+        scenario.onFragment { fragment ->
+            Navigation.setViewNavController(fragment.requireView(), mockNavController)
+        }
+
         Thread.sleep(SplashViewModel.SPLASH_NAVIGATION_DELAY)
 
         verify {

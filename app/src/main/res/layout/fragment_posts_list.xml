@@ -60,6 +60,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
+            android:id="@+id/posts_list_empty_message"
             style="@style/errorMessageStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,6 +73,7 @@
             tools:visibility="gone" />
 
         <TextView
+            android:id="@+id/posts_list_error_message"
             style="@style/errorMessageStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
