@@ -27,7 +27,7 @@ class SplashFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        splashViewModel.navigateToNextScene.observe(viewLifecycleOwner, Observer {
+        splashViewModel.navigateToNextScene.observe(viewLifecycleOwner,  {
             binding.root.findNavController().navigate(SplashFragmentDirections.navigateToPosts())
         })
     }

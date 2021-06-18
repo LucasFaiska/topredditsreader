@@ -18,8 +18,12 @@ class SplashViewModel : ViewModel()  {
 
     private fun initSplash() {
         viewModelScope.launch {
-            delay(1000)
+            delay(SPLASH_NAVIGATION_DELAY)
             _navigateToNextSceneObserver.postValue(Unit)
         }
+    }
+
+    companion object{
+        const val SPLASH_NAVIGATION_DELAY = 1000L
     }
 }
