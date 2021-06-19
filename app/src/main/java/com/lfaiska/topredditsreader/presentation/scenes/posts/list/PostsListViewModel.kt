@@ -1,12 +1,10 @@
 package com.lfaiska.topredditsreader.presentation.scenes.posts.list
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lfaiska.topredditsreader.data.repository.RepositoryException
-import com.lfaiska.topredditsreader.domain.model.PostData
 import com.lfaiska.topredditsreader.domain.model.PostList
 import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCase
 import kotlinx.coroutines.launch

@@ -56,8 +56,11 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation 'org.koin:koin-test:2.1.6'
+
+    androidTestImplementation('com.schibsted.spain:barista:3.9.0') {
+        exclude group: 'org.jetbrains.kotlin'
+    }
 
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.0-alpha03"
 

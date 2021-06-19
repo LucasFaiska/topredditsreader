@@ -2,12 +2,8 @@ package com.lfaiska.topredditsreader
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.lfaiska.topredditsreader.presentation.scenes.splash.SplashFragment
@@ -19,6 +15,8 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasDrawable
+import com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -42,7 +40,7 @@ class SplashTest {
             Navigation.setViewNavController(fragment.requireView(), mockNavController)
         }
 
-        onView(withId(R.id.splash_image)).check(matches(VectorDrawableMatcher(R.drawable.ic_reddit_logo)))
+        assertHasDrawable(R.id.splash_image, R.drawable.ic_reddit_logo)
     }
 
     @Test
@@ -51,7 +49,7 @@ class SplashTest {
             Navigation.setViewNavController(fragment.requireView(), mockNavController)
         }
 
-        Thread.sleep(SplashViewModel.SPLASH_NAVIGATION_DELAY)
+        sleep(SplashViewModel.SPLASH_NAVIGATION_DELAY)
 
         verify {
             mockNavController.navigate(SplashFragmentDirections.navigateToPosts())

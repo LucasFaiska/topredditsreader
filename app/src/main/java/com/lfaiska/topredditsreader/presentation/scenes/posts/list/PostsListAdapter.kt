@@ -11,7 +11,7 @@ import com.lfaiska.topredditsreader.domain.model.PostData
 
 class PostsListAdapter(
     private val onPostSelected: (matchId: PostData) -> Unit
-) : RecyclerView.Adapter<PostsListAdapter.MatchViewHolder>() {
+) : RecyclerView.Adapter<PostsListAdapter.PostListViewHolder>() {
 
     private val posts: MutableList<PostData> = mutableListOf()
 
@@ -25,7 +25,7 @@ class PostsListAdapter(
         this.notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostListViewHolder {
         val binding: ViewPostsListItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             R.layout.view_posts_list_item,
@@ -33,7 +33,7 @@ class PostsListAdapter(
             false
         )
 
-        return MatchViewHolder(
+        return PostListViewHolder(
             binding
         )
     }
@@ -44,10 +44,10 @@ class PostsListAdapter(
 
     override fun getItemCount() = posts.size
 
-    override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostListViewHolder, position: Int) {
         holder.binding.post = posts[position]
         holder.binding.root.setOnClickListener { onPostSelected.invoke(posts[position]) }
     }
 
-    class MatchViewHolder(val binding: ViewPostsListItemBinding) : ViewHolder(binding.root)
+    class PostListViewHolder(val binding: ViewPostsListItemBinding) : ViewHolder(binding.root)
 }
