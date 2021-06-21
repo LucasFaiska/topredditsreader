@@ -1,9 +1,8 @@
-package com.lfaiska.topredditsreader.domain.mappers
+package com.lfaiska.topredditsreader.domain.mapper
 
 import com.lfaiska.topredditsreader.data.remote.dto.ListResponse
 import com.lfaiska.topredditsreader.domain.model.PostData
 import com.lfaiska.topredditsreader.domain.model.PostList
-import java.util.*
 
 class PostMapper {
     companion object {

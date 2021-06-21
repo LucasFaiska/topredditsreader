@@ -1,7 +1,7 @@
-package com.lfaiska.topredditsreader.domain.usecases
+package com.lfaiska.topredditsreader.domain.usecase
 
 import com.lfaiska.topredditsreader.data.repository.RedditRepository
-import com.lfaiska.topredditsreader.domain.mappers.PostMapper.Companion.toPostList
+import com.lfaiska.topredditsreader.domain.mapper.PostMapper.Companion.toPostList
 import com.lfaiska.topredditsreader.domain.model.PostList
 
 class GetTopRedditsPostsUseCaseImpl(private val repository: RedditRepository) : GetTopRedditsPostsUseCase {

@@ -7,8 +7,8 @@ import com.lfaiska.topredditsreader.data.remote.dto.ListResponse
 import com.lfaiska.topredditsreader.data.repository.RedditRepository
 import com.lfaiska.topredditsreader.domain.model.PostData
 import com.lfaiska.topredditsreader.domain.model.PostList
-import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCase
-import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCaseImpl
+import com.lfaiska.topredditsreader.domain.usecase.GetTopRedditsPostsUseCase
+import com.lfaiska.topredditsreader.domain.usecase.GetTopRedditsPostsUseCaseImpl
 import io.mockk.MockKAnnotations
 import io.mockk.Ordering
 import io.mockk.coEvery

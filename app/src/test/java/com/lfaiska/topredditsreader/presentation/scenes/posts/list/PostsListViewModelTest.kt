@@ -6,7 +6,7 @@ import com.lfaiska.topredditsreader.CoroutinesMainDispatcherRule
 import com.lfaiska.topredditsreader.data.repository.RepositoryException
 import com.lfaiska.topredditsreader.domain.model.PostData
 import com.lfaiska.topredditsreader.domain.model.PostList
-import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCase
+import com.lfaiska.topredditsreader.domain.usecase.GetTopRedditsPostsUseCase
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.Dispatchers

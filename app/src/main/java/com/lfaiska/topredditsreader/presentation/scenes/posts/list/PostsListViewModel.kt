@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lfaiska.topredditsreader.data.repository.RepositoryException
 import com.lfaiska.topredditsreader.domain.model.PostList
-import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCase
+import com.lfaiska.topredditsreader.domain.usecase.GetTopRedditsPostsUseCase
 import kotlinx.coroutines.launch
 
 class PostsListViewModel constructor(

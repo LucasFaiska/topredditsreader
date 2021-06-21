@@ -1,4 +1,4 @@
-package com.lfaiska.topredditsreader.domain.usecases
+package com.lfaiska.topredditsreader.domain.usecase
 
 import com.lfaiska.topredditsreader.domain.model.PostList
 

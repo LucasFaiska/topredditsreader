@@ -7,7 +7,7 @@ import androidx.test.filters.LargeTest
 import com.lfaiska.topredditsreader.data.repository.RepositoryException
 import com.lfaiska.topredditsreader.domain.model.PostData
 import com.lfaiska.topredditsreader.domain.model.PostList
-import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCase
+import com.lfaiska.topredditsreader.domain.usecase.GetTopRedditsPostsUseCase
 import com.lfaiska.topredditsreader.presentation.scenes.posts.list.PostsListFragment
 import com.lfaiska.topredditsreader.presentation.scenes.posts.list.PostsListViewModel
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition

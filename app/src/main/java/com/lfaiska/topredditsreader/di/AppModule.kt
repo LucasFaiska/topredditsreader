@@ -1,8 +1,8 @@
 package com.lfaiska.topredditsreader.di
 
 import com.lfaiska.topredditsreader.data.repository.RedditRepository
-import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCase
-import com.lfaiska.topredditsreader.domain.usecases.GetTopRedditsPostsUseCaseImpl
+import com.lfaiska.topredditsreader.domain.usecase.GetTopRedditsPostsUseCase
+import com.lfaiska.topredditsreader.domain.usecase.GetTopRedditsPostsUseCaseImpl
 import com.lfaiska.topredditsreader.presentation.scenes.posts.list.PostsListViewModel
 import com.lfaiska.topredditsreader.presentation.scenes.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
