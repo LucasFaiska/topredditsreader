@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.lfaiska.topredditsreader"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -72,7 +72,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"
 
     implementation "io.mockk:mockk:1.10.5"
-    implementation "io.mockk:mockk-android:1.9.3"
+
+    androidTestImplementation "io.mockk:mockk-android:1.9.3"
 
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
